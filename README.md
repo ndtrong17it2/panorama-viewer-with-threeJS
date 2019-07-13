@@ -11,6 +11,11 @@
 ```
 node node.js
 ```
+* 4. Open Web browser(GG Chrome, etc..) and goto 
+```
+localhost:3000
+```
+### Enjoy
 
 **If your browser's console return error "Access Cross Origin", you must following step by step:**
 
