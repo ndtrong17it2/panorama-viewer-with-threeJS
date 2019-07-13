@@ -1,4 +1,4 @@
-# Node Example
+# Panorama Image Viewer Simple Example
 ##
 
 ## The project using express framework of Nodejs
