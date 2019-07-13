@@ -14,9 +14,9 @@ node node.js
 
 **If your browser's console return error "Access Cross Origin", you must following step by step:**
     *1. Right click on your browser, and choose "Properties" 
-     2. In field "Target", add this line : 
+    *2. In field "Target", add this line : 
      ```
      --user-data-dir="C:\Program Files (x86)\Google\Chrome\Application\ dev session" --disable-web-security
      ```
-     3. Apply and restart your browser.*
+    *3. Apply and restart your browser.*
      
