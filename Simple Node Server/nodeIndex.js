@@ -5,6 +5,8 @@ const port = 3000;
 app.use(express.static(__dirname));
 
 app.get('/', function(req, res){
+	res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	res.sendFile('index.html', {root: __dirname});
 
 });
