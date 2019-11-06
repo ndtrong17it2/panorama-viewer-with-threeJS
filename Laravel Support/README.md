@@ -13,6 +13,10 @@
 
 *2. Type:
 ```
+composer install --no-scripts
+```
+
+```
 npm install
 ```
 
