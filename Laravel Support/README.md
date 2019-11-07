@@ -1,17 +1,17 @@
-#Require:
+## Require:
 
-##MySQL database:
+### MySQL database:
 
 	+ Create schemas/ db name: "test_db"
 	+ Port: 3306
 	
-*- Delete folder Panorama-Laravel/public/storage if it exist
+___*Delete folder Panorama-Laravel/public/storage if it exist___
 
-##How to run:
+## How to run:
 
-*1. Open Command Prompt(CMD) or GitBash in "Panorama-Laravel" folder.
+1. Open Command Prompt(CMD) or GitBash in "Panorama-Laravel" folder.
 
-*2. Type:
+2. Type:
 ```
 composer install --no-scripts
 ```
@@ -35,13 +35,13 @@ php artisan storage:link
 php artisan serve
 ```
 
-*3. Open ur browser with URL:
+3. Open ur browser with URL:
 		```
 		http://localhost:8000/
 		```
                 
-*4. Enjoy~~
+4. Enjoy~~
 
-##How to use:
+## How to use:
 
-*Sefl-Research!
+___Self-Research!
