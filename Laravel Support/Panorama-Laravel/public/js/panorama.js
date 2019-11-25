@@ -28,20 +28,20 @@ var camera,
     sphere;
 
 
-$(document).ready(function () {
-    if ($('#loaded-panorama').html().trim() === '') {
-        var firstLoadImage;
-        firstLoadImage = $('#list-panorama-image a:first-child').attr('data-value');
-        // console.log($('#list-panorama-image a:first-child').attr('data-value'));
-        onChangeImage(firstLoadImage);
-    }
-    $('.list-group a').on('click', function () {
-        $('.list-group a.active').removeClass('active');
-        $(this).addClass('active');
-        // console.log($(this).attr('data-value'));
-        onChangeImage($(this).attr('data-value'));
-    });
-});
+// $(document).ready(function () {
+//     if ($('#loaded-panorama').html().trim() === '') {
+//         var firstLoadImage;
+//         firstLoadImage = $('#list-panorama-image a:first-child').attr('data-value');
+//         // console.log($('#list-panorama-image a:first-child').attr('data-value'));
+//         onChangeImage(firstLoadImage);
+//     }
+//     $('.list-group a').on('click', function () {
+//         $('.list-group a.active').removeClass('active');
+//         $(this).addClass('active');
+//         // console.log($(this).attr('data-value'));
+//         onChangeImage($(this).attr('data-value'));
+//     });
+// });
 
 // init();
 

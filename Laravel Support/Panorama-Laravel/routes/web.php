@@ -10,9 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('images', 'ImageController');
+Route::resource('images', 'ImageController')->except([
+    'show'
+]);
 Route::resource('coordinates', 'CoordinatesController');
 Route::get('/', 'ImageController@index')->name('image.index');
+Route::resource('groups_images', 'GroupsImagesController');
+Route::get('/view/{groupImage}/{imageName}', 'ImageController@show')->name('image.show');
 // Route::get('/panorama', function () {
 //     return view('layout/panorama-view');
 // });

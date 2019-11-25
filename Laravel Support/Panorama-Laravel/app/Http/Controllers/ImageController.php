@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\TblImage;
+use App\TblImages;
+use App\TblGroupsImages;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
@@ -19,9 +20,17 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images = TblImage::all();
-        return view('layout.panorama-view', compact('images'));
+        $images = TblImages::all();
+        $image = $images->first();
+        // $groupName = count($image);
+        $groups = TblGroupsImages::all();
+        if(!count($images))
+        {
+            return view('layout.input', compact('groups'));
+        }
         
+        // return view('layout.panorama-view', compact('images'));
+        return redirect()->route('image.show', ['groupImage' => $image->group()->get()[0]->name, 'imageName'=>str_replace(' ', '-', $image->name)])->with(compact('images'));
     }
 
     /**
@@ -31,7 +40,8 @@ class ImageController extends Controller
      */
     public function create()
     {
-        return view('layout.input');
+        $groups = TblGroupsImages::all();
+        return view('layout.input', compact('groups'));
     }
 
     /**
@@ -50,7 +60,9 @@ class ImageController extends Controller
             'name' => $fileName,
             'src' => '/'.$srcName
         ];
-        $createdImage = TblImage::create($dataImage);
+        $createdImage = TblImages::create($dataImage);
+        $groupImage = TblGroupsImages::find($request->groupsImages);
+        $groupImage->images()->save($createdImage);
         $this->makeAndSaveImage($image, $srcName, $createdImage->id);
         return redirect()->route('images.index')->with('success', 'File saved!'.$fileName);
     }
@@ -61,9 +73,13 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function show(TblImage $image)
+    public function show(String $groupImage,String $imageName)
     {
-        //
+        $imageName = str_replace('-', ' ', $imageName);
+        // $groupImage = str_replace('-', ' ', $groupImage);
+        $images = TblImages::all();
+        $image = TblImages::where('name', $imageName)->first();
+        return view('layout.panorama-view', compact('images', 'image'));
     }
 
     /**
@@ -72,7 +88,7 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function edit(TblImage $image)
+    public function edit(TblImages $image)
     {
         return view('layout.edit-images', compact('image'));
     }
@@ -84,7 +100,7 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TblImage $image)
+    public function update(Request $request, TblImages $image)
     {
         if($request->hasFile('inputFile'))
         {
@@ -113,7 +129,7 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TblImage $image)
+    public function destroy(TblImages $image)
     {
         $image->delete();
         $path = 'public/storageImage/'.$image->id;

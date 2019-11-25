@@ -2,6 +2,7 @@
 
 ### MySQL database:
 
+	+ Laravel 5+
 	+ Create schemas/ db name: "test_db"
 	+ Port: 3306
 	
@@ -15,11 +16,6 @@ ___*Delete folder Panorama-Laravel/public/storage if it exist___
 ```
 composer install --no-scripts
 ```
-
-```
-npm install
-```
-
 
 ```
 php artisan migrate
@@ -43,5 +39,9 @@ php artisan serve
 4. Enjoy~~
 
 ## How to use:
+
+1. You have to add the Area(Group of Image) first.
+
+2. And then, you can add your panorama image.
 
 ___Self-Research!
