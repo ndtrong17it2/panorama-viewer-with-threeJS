@@ -18,6 +18,10 @@ composer install --no-scripts
 ```
 
 ```
+npm install
+```
+
+```
 php artisan migrate
 ```
  
